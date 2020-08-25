@@ -1,24 +1,24 @@
 package com.palo.model;
 
-import java.util.Set;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="user")
 public class User {
 	
 	
+		
+		private String name;
 		@Id
 		private Long id;
-		private String name;
 		private String email;
-		
-		@OneToMany
-		private Set<Category> category;
+		@Column(name="password")
+		private String password;
 		
 		public Long getId() {
 			return id;
@@ -40,10 +40,23 @@ public class User {
 			this.email = email;
 		}
 		
+		
+		public String getPassword() {
+			return password;
+		}
+		public void setPassword(String password) {
+			this.password = password;
+		}
 		public User() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
+		@Override
+		public String toString() {
+			return "User [name=" + name + ", id=" + id + ", email=" + email + ", password=" + password + "]";
+		}
+		
+		
 		
 
 }
