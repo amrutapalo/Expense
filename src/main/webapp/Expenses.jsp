@@ -13,7 +13,13 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background-color: lightyellow;
+      background-color: white;
+    }
+
+    h1{
+        font-size: large;
+        color: #4c7aaf;
+        margin-bottom: 30px;
     }
     
     .topnav {
@@ -102,6 +108,8 @@
 
         <div class="form_container">
 
+            <h1>Add your expenses here</h1>
+
             <form action="save">
     
                 <div class="row">
@@ -167,6 +175,7 @@
                 <br>
                 <button type="submit" class="first-button">Save</button>
                 <br>
+                <p>${obj}</p>
             </form>
         </div>
             

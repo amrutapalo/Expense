@@ -85,7 +85,7 @@
                 <th width="10%">Title</th>
                 <th width="20%">Description</th>
                 <th width="20%">Category</th>
-                <th width="10%">Amount</th>
+                <th width="10%">Amount(Rs.)</th>
                 <th width="10%">Date</th>
             </tr>
             <input type="hidden" name="id" id="id" value="${id}"/>

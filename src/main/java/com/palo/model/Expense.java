@@ -11,7 +11,6 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
-@Component
 @Entity
 @Table(name="expense")
 public class Expense {

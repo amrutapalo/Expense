@@ -13,9 +13,13 @@ public interface ExpenseDao extends JpaRepository<Expense, Long>{
 	List<Expense> findAll();
 	List<Expense> findByUserId(Long userId);
 	
-
-	//@Query("from expense where id=?1 order by expensedate")
-	//List<Expense> findByIdSorted(Long id);
+	//List<Expense> findByUserIdOrderByExpensedate(Long userId);
+	@Query("select e from Expense e where e.userId=?1 order by e.expensedate desc")
+	List<Expense> findByUserIdSorted(Long userId);
 	
+	//@Query("select e from Expense order by e.expensedate")
+	//List<Expense> findByUserIdOrderByExpensedateDesc(Long userId);
+
+	//findFirst5ByTitleOrderByTitleAsc
 	
 }

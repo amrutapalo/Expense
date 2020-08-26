@@ -13,7 +13,7 @@ public class ExpenseApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context= SpringApplication.run(ExpenseApplication.class, args);
 		
-		Expense expense = context.getBean(Expense.class);
+		//Expense expense = context.getBean(Expense.class);
 	}
 
 }

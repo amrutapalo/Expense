@@ -3,17 +3,27 @@ package com.palo.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Feedback {
 	
 	@Id @GeneratedValue
 	private Long id;
-	private String feedback;
+	private String feedbackText;
+	private Long userId;
 	
-	@ManyToOne
-	private User user;
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Feedback() {
 		// TODO Auto-generated constructor stub
@@ -23,22 +33,13 @@ public class Feedback {
 		return id;
 	}
 
-	public String getFeedback() {
-		return feedback;
+	public String getFeedbackText() {
+		return feedbackText;
 	}
 
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
+	public void setFeedback(String feedbackText) {
+		this.feedbackText = feedbackText;
 	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 	
 
 }
