@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.palo.dao.ExpenseDao;
 import com.palo.model.CurrentUser;
 import com.palo.model.Expense;
+import com.zaxxer.hikari.util.SuspendResumeLock;
 
 
 @Controller
@@ -92,10 +93,12 @@ public class ExpenseController {
 			
 			Map<String, Long> map=new LinkedHashMap<String, Long>();
 			for(Object[] data: expenseReport) {
-				map.put((String)data[0], (Long)data[1]);
+				map.put("'"+data[0]+"'", (Long)data[1]);
 			}
 			
 			System.out.println(map.keySet());
+			System.out.println(map.values());
+
 			
 			ModelAndView mv=new ModelAndView();
 			

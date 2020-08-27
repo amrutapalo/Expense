@@ -41,16 +41,25 @@ body {
     
        
     th {
-  background-color: #4c7aaf;
-  color: white;
-  height: 60px;
-  }
-
-  th, td {
-  border-bottom: 1px solid #ddd;
-  padding: 15px;
-}
-
+		  background-color: #4c7aaf;
+		  color: white;
+		  height: 60px;
+		  }
+		
+	th, td {
+		  border-bottom: 1px solid #ddd;
+		  padding: 15px;
+		}
+		
+	.column {
+  		float: left;
+ 		 width: 45%;
+  		padding: 5px;
+		}
+	
+	#container{
+		height:500px;
+	}	
 </style>
 <head>
 <meta charset="UTF-8">
@@ -68,15 +77,13 @@ body {
         
       </div>
 
-      <div class="table_container" style="width:50%; height:300px; margin-left: 50px">
         <h2></h2>
-        <table class="expense_report_table" id="expense_report_table">
+        <table class="column" id="expense_report_table">
             <tr>
                 <th width="30%">Category</th>
                 <th width="20%">Expense</th>
                 
             </tr>
-            <input type="hidden" name="id" id="id" value="${id}"/>
 
             <c:forEach items="${expenseReport}" var="counter">
             <tbody>
@@ -88,8 +95,8 @@ body {
             </tbody>            
         </table>
 
-      <div id="container" style="width:50%; height:300px;">
-      		
+      <div id="container" class="column">
+      		${map.keySet()}
       
       </div>
 
@@ -100,6 +107,26 @@ body {
       <script>
         $(document).ready(function(){
 
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
         	Highcharts.chart('container', {
                 chart: {
                     type: 'bar'
@@ -108,14 +135,11 @@ body {
                     text: 'Expenses'
                 },
                 xAxis: {
-                    categories: [[${map.keySet()}]],
-                    //categories:['blue','yellow']
+                    categories: ${map.keySet()}
+                    //categories:['movie', 'food', 'travel', 'shopping', 'grocery']
                     //crosshair: true
-                    labels: {
-	                formatter: function() {
-	                    return this.value;
-	                }
-                },
+                   },
+                	    
                 yAxis: {
                     title: {
                         text: 'Amount(Rs.)'
@@ -123,7 +147,7 @@ body {
                 },
                 series: [{
                     //name: 'Amount',
-                    //data: [[${map.values()}]]
+                    data: ${map.values()}
                     //data:[200,300]
                 }]
               
