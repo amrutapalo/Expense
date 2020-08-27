@@ -1,9 +1,12 @@
 package com.palo.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.hibernate.LockMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -74,10 +77,30 @@ public class ExpenseController {
 		  return mv;
 	 
 	 }
+		 
+	 //--- REPORT ---
 
 	@RequestMapping("/report")
-		public ModelAndView expenseReport(){
-			ModelAndView mv=new ModelAndView();		  
+	public ModelAndView expenseReport(){			
+		
+			List<Object[]> expenseReport = expensedao.
+					findByUserIdOrderByExpenseAmountDesc(currentUser.getLoggedInUserId());
+
+			for(Object[] data: expenseReport) {
+				System.out.println(data[0]+" "+data[1]+" "+data[1].getClass().getName());
+			}
+			
+			Map<String, Long> map=new LinkedHashMap<String, Long>();
+			for(Object[] data: expenseReport) {
+				map.put((String)data[0], (Long)data[1]);
+			}
+			
+			System.out.println(map.keySet());
+			
+			ModelAndView mv=new ModelAndView();
+			
+			mv.addObject("expenseReport",expenseReport); 
+			mv.addObject("map", map);
 			mv.setViewName("report");
 			return mv;		  
 		

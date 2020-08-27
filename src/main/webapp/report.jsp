@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -36,6 +38,18 @@ body {
       text-decoration: none;
       font-size: 17px;      
     }
+    
+       
+    th {
+  background-color: #4c7aaf;
+  color: white;
+  height: 60px;
+  }
+
+  th, td {
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+}
 
 </style>
 <head>
@@ -54,5 +68,80 @@ body {
         
       </div>
 
+      <div class="table_container" style="width:50%; height:300px; margin-left: 50px">
+        <h2></h2>
+        <table class="expense_report_table" id="expense_report_table">
+            <tr>
+                <th width="30%">Category</th>
+                <th width="20%">Expense</th>
+                
+            </tr>
+            <input type="hidden" name="id" id="id" value="${id}"/>
+
+            <c:forEach items="${expenseReport}" var="counter">
+            <tbody>
+                <tr>
+                    <td>${counter[0]}</td>
+                    <td>${counter[1]}</td>
+                    </tr>
+                    </c:forEach>
+            </tbody>            
+        </table>
+
+      <div id="container" style="width:50%; height:300px;">
+      		
+      
+      </div>
+
+	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+      <script>
+        $(document).ready(function(){
+
+        	Highcharts.chart('container', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Expenses'
+                },
+                xAxis: {
+                    categories: [[${map.keySet()}]],
+                    //categories:['blue','yellow']
+                    //crosshair: true
+                    labels: {
+	                formatter: function() {
+	                    return this.value;
+	                }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Amount(Rs.)'
+                    }
+                },
+                series: [{
+                    //name: 'Amount',
+                    //data: [[${map.values()}]]
+                    //data:[200,300]
+                }]
+              
+       })
+        
+
+        });
+        
+        
+        
+        </script>
+      
+
 </body>
 </html>
+
+
+
+
+
+        

@@ -7,9 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="expense")
@@ -64,6 +61,18 @@ public class Expense {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Expense(Long id, String title, String descripton, String category, Long expenseAmount, Date expensedate,
+			Long userId) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.descripton = descripton;
+		this.category = category;
+		this.expenseAmount = expenseAmount;
+		this.expensedate = expensedate;
+		this.userId = userId;
 	}
 
 	public Date getExpensedate() {
