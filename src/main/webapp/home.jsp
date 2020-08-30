@@ -9,7 +9,7 @@
 <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color: rgb(213, 217, 255)223, 165, 165);
+      background-color: white;
     }
     
     h3{
@@ -53,6 +53,14 @@
       opacity: 0.9;
       font-size: large;
 
+    }
+
+    .login_button:hover{
+      opacity: 1;
+    }
+
+    .register_button:hover{
+      opacity: 1;
     }
     
     </style>

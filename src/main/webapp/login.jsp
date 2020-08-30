@@ -69,17 +69,17 @@
           <p>Expense Tracker Application</p>
       </div>
   
-      <form action="loginValidate">
+      <form onsubmit="return loginValidate()" action="loginValidate" method="post">
           <div class="container">
             <h1>Login</h1>
             
             <label for="mobile_number"><b>User ID</b></label>
             <input type="tel" placeholder="Your 10-digit mobile number is your user id" 
-            name="id" id="id" required>
+            name="id" id="id" pattern="[0-9]{10}">
             <br>
 
             <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+            <input type="password" placeholder="Enter Password" name="password" id="password">
               <br>
             
             <input type="submit" class="registerbtn" id="registerbtn" value="Login">
@@ -90,3 +90,18 @@
     </body>
   
 </html>
+
+<script>
+
+function loginValidate(){
+  	var userId=document.getElementById("id");
+	var password=document.getElementById("password");
+  	if( userId.value.trim() == "" ){
+        alert("Please enter the user id");
+        return false;
+    }else if(password.value.trim() == ""){
+      alert("Please enter the password");
+        return false;
+    }
+}
+</script>

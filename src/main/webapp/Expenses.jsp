@@ -2,19 +2,16 @@
     pageEncoding="UTF-8"%>
     
 <%@ page isELIgnored = "false" %>
+<%@ include file="header.jsp"%>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add Expense</title>
 </head>
 <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: white;
-    }
 
     h1{
         font-size: large;
@@ -22,165 +19,99 @@
         margin-bottom: 30px;
     }
     
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
-    
-    .topnav a {
-      float: right;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 21px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-    
-    .topnav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-    
-    .topnav p{
-    	float: left;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 7px 16px;
-      text-decoration: none;
-      font-size: 17px;      
-    }
-
-    .main_container {
-    
-        border-radius: 5px;
-        height: 100px;
-        padding:50px;
-    }
-
     .form_container{
-        margin-top: 100px;
-        margin-left: 350px;
-        
+        padding: 16px;
+         background-color: white;
+  
+        margin-left: 100px;
+         margin-top: 60px;
     }
-    input{
-        border-radius: 5px;
-    }
-    .first_col {
-        float:left;        
-        width: 25%;
-        margin-top: 1px;
-        margin-bottom: 2px;
-    }
+    label{
+      float:left;
+      padding: 3px;
+      margin-bottom: 10px;
+      width: 25%;
+  }
+  
+  input,#category{
+      padding: 3px;
+      margin-bottom: 10px;
+      float: left;
+      width: 50%;
+      height: 30px;
+  }
 
-    .second_col{
-        float: left;
-        width: 70%;
-        margin-top: 1px;
-        margin-bottom: 2px;
-    }
-
-    .row{
-        margin-bottom: 2px;
-    }
-
-    .first-button {
-        width:150px;
-        margin-top: 20px;
-        background-color: #4c7aaf;
-        color: lightyellow;
-    }
+  .add-button:hover {
+    opacity:1;
+  }
+  
+  .add-button {
+    background-color: #4c7aaf;
+    color: white;
+    padding: 10px 10px;
+    margin: 5px 5px 5px 5px;
+    border: none;
+    width: 30%;
+    opacity: 0.9;
+    margin-left: 150;
+  }
 
     
 </style>
 <body>
 
-    <div class="topnav">
-        <p>Expense Tracker Application</p>
-        <a href="/logout">Logout</a>
-        <a href="/report">Report</a>
-        <a href="/feedback">Feedback</a>
-        <a href="/listofexpenses">Your Expenses</a>
-        <a href="/addexpense">Add Expense</a>
-        
-      </div>
-
-    <div class="main_container">
-
-        <div class="form_container">
-
-            <h1>Add your expenses here</h1>
-
             <form action="save">
-    
-                <div class="row">
-                    <div class="first_col">
+                <div class="form_container">
+                        <h1>Add your expense here</h1>
                         <label for="title">Title</label>
-                    </div>
-                    <div class="second_col">
                         <input type="text" name="title" id="title" required>
-                    </div>
-                    
-                </div>
-                <br>
+                
+                        <br>
         
-                <div class="row">
-                    <div class="first_col">
+                
                         <label for="description">Description</label>
-                    </div>
-                    <div class="second_col">
                         <input type="text" name="description" id="description">
-                    </div>
-                </div>
-                <br>
+                    
+                        <br>
         
-                <div class="row">
-                    <div class="first_col">
+                
                         <label for="category">Category</label>
-                    </div>
-                    <div class="others">
+                    
                         <select id="category" name="category">
-                            <option value="travel">Travel</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="food">Food</option>
-                            <option value="movie">Movie</option>
-                            <option value="grocery">Grocery</option>
+                            <option value="Cab">Cab</option>
+                            <option value="Coffee">Coffee</option>
+                            <option value="Food">Food</option>
+                            <option value="Grocery">Grocery</option>
+                            <option value="Hotel">Hotel</option>
+                            <option value="Movie">Movie</option>
+                            <option value="Rickshaw">Rickshaw</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Taxi">Taxi</option>
+                            <option value="Travel">Travel</option>
                         </select>
-                    </div>
-                </div>
-                <br>
+                    
+                    <br>
 
-                <div class="row">
-                    <div class="first_col">
+                
                         <label for="expenseAmount">Amount Spent</label>
-                    </div>
-                    <div class="second_col">
                         <input type="number" name="expenseAmount" id="expenseAmount">
-                    </div>
-                </div>
-                <br>
-        
-        
-                <div class="row">
-                    <div class="first_col">
+                    
+                    <br>
+               
                         <label for="expenseDate">Expense Date</label>
-                    </div>
-                    <div class="second_col">
                         <input type="date" name="expenseDate" id="expenseDate" required>
-                    </div>
+                    
         
                  <!-- <input type="hidden" name="id" id="id" value="${id}"/> -->
-                
-                    
+                    <br>
+                        <button type="submit" class="add-button">Save</button>
+                    <br>
+                        <p>${obj}</p>
                 </div>
-                <br>
-                <button type="submit" class="first-button">Save</button>
-                <br>
-                <p>${obj}</p>
             </form>
-        </div>
+        
             
         
-    </div>
     
 </body>
 </html>

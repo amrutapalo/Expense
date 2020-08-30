@@ -1,44 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="header.jsp"%>
+
 
 <!DOCTYPE html>
 <html>
 <style>
-body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: white;
-    }
-    
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
-    
-    .topnav a {
-      float: right;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 21px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-    
-    .topnav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-    
-    .topnav p{
-    	float: left;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 7px 16px;
-      text-decoration: none;
-      font-size: 17px;      
-    }
-    
+
        
     th {
 		  background-color: #4c7aaf;
@@ -53,12 +22,19 @@ body {
 		
 	.column {
   		float: left;
- 		 width: 45%;
   		padding: 5px;
+      
 		}
+    #expense_report_table{
+      width: 35%;
+      border: 2px solid #333;
+      margin-left: 15px;
+    }
 	
 	#container{
+    width: 45%;
 		height:500px;
+    margin-left: 23px;
 	}	
 </style>
 <head>
@@ -66,17 +42,6 @@ body {
 <title>Expense Report</title>
 </head>
 <body>
-
-    <div class="topnav">
-        <p>Expense Tracker Application</p>
-        <a href="/logout">Logout</a>
-        <a href="/report">Report</a>
-        <a href="/feedback">Feedback</a>
-        <a href="/listofexpenses">Your Expenses</a>
-        <a href="/addexpense">Add Expense</a>
-        
-      </div>
-
         <h2></h2>
         <table class="column" id="expense_report_table">
             <tr>
@@ -96,37 +61,18 @@ body {
         </table>
 
       <div id="container" class="column">
-      		${map.keySet()}
       
       </div>
-
-	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+      
+		
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>	
       <script src="https://code.highcharts.com/highcharts.js"></script>
       <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
       <script>
         $(document).ready(function(){
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             
-
         	Highcharts.chart('container', {
                 chart: {
                     type: 'bar'
@@ -136,24 +82,18 @@ body {
                 },
                 xAxis: {
                     categories: ${map.keySet()}
-                    //categories:['movie', 'food', 'travel', 'shopping', 'grocery']
-                    //crosshair: true
-                   },
-                	    
+                   },    
                 yAxis: {
                     title: {
-                        text: 'Amount(Rs.)'
+                        text: 'In Rupees(Rs.)'
                     }
                 },
                 series: [{
-                    //name: 'Amount',
+                    name: 'Amount',
                     data: ${map.values()}
-                    //data:[200,300]
-                }]
-              
+                }]          
        })
         
-
         });
         
         

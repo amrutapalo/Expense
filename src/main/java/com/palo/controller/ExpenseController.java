@@ -1,8 +1,6 @@
 package com.palo.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.palo.dao.ExpenseDao;
 import com.palo.model.CurrentUser;
 import com.palo.model.Expense;
-import com.zaxxer.hikari.util.SuspendResumeLock;
 
 
 @Controller
@@ -25,14 +22,14 @@ public class ExpenseController {
 
 	@Autowired
 	private ExpenseDao expensedao;
-	//@Autowired
-	//private Expense expense;
 	@Autowired
 	CurrentUser currentUser;
 
 	public ExpenseController() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	// --- ADD EXPENSE PAGE REQUEST ---
 	
 	@RequestMapping("/addexpense")
 	  public ModelAndView expense(Expense expense){
@@ -41,6 +38,8 @@ public class ExpenseController {
 		  return mv;		  
 	 
 	 }
+	
+	//--- SAVE ACTION REQUEST ---
 
 	 @RequestMapping("save")
 	  public ModelAndView expenseSave(@RequestParam String title,@RequestParam String description,
@@ -65,6 +64,8 @@ public class ExpenseController {
 		  return mv;		  
 	 
 	 }
+	 
+	 //--- LIST PAGE ---
 
 	@RequestMapping("/listofexpenses")
 	  public ModelAndView listofexpensesId(){

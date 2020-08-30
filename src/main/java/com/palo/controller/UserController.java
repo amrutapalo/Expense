@@ -47,14 +47,25 @@ public class UserController {
 		return mv;
 	}
 
-	@RequestMapping("registrationdone")
-	public String registrationDone(User user) {
+	@RequestMapping(value = "registrationdone", method = RequestMethod.POST)
+	public ModelAndView registrationDone(User user) {
 		
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
 		System.out.println(user.getId());
-		userdao.save(user);
-		return "login";
+		
+		User error=userdao.findById(user.getId()).orElse(new User());
+		
+		ModelAndView mv=new ModelAndView();
+		if(error.getId() == user.getId()) {
+			mv.addObject("errorMessage","An user with same mobile number already exists!");
+			mv.setViewName("register");
+		}else {
+			userdao.save(user);
+			mv.setViewName("login");
+		}
+		
+		return mv;
 	}
 
 	@RequestMapping("/login")
@@ -64,8 +75,8 @@ public class UserController {
 		mv.setViewName("login");
 		return mv;
 	}
-	//START HERE
-	@RequestMapping(value ="loginValidate")
+
+	@RequestMapping(value ="loginValidate", method = RequestMethod.POST)
 	public ModelAndView loginValidate(@RequestParam Long id,
 			@RequestParam String password) {
 		
@@ -78,13 +89,18 @@ public class UserController {
 		String newPassword=user.getPassword();
 		System.out.println("In login Validate"+ currentUser.getLoggedInUserId());
 		if(password.equals(newPassword)) {
-			//Expense expense=new Expense();
-			//expense.setId(id);
-			mv.addObject("id",id);
-			mv.setViewName("Expenses");
+			mv.setViewName("loginHome");
 		}else {
 			mv.setViewName("login");
 		}
+		return mv;
+	}
+	
+	@RequestMapping("/loginHome")
+	public ModelAndView loginHome() {
+		ModelAndView mv=new ModelAndView();
+		
+		mv.setViewName("loginHome");
 		return mv;
 	}
 	

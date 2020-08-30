@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,6 +63,10 @@ input{
     float: left;
     width: 50%;
 }
+
+span{
+	color:red;
+}
     
 
 </style>
@@ -71,24 +75,25 @@ input{
         <p>Expense Tracker Application</p>
     </div>
 
-    <form action="registrationdone">
+    <form onsubmit="return registrationdone()" action="registrationdone" method="post">
         <div class="container">
           <h1>Register</h1>
           <p>Please fill in this form to create an register</p>
           
       
           <label for="name"><b>Name</b></label>
-          <input type="text" placeholder="Enter Name" name="name" id="name" required>
+          <input type="text" placeholder="Enter Name" name="name" id="name">
           <br>
           <label for="mobile_number"><b>Mobile Number</b></label>
           <input type="tel" placeholder="Your 10-digit mobile number is your unique user id"
-          name="id" id="id" required>
+          name="id" id="id" pattern="[0-9]{10}">
+          <span>${errorMessage}</span>
           <br>
           <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+          <input type="text" placeholder="Enter Email" name="email" id="email">
             <br>
           <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" id="password" required>
+          <input type="password" placeholder="Enter Password" name="password" id="password">
             <br>
       
           <input type="submit" class="registerbtn" value="Register">
@@ -97,3 +102,29 @@ input{
       </form>
 </body>
 </html>
+
+<script>
+
+  function registrationdone(){
+    
+    //var userId=document.getElementById("id");
+    var password=document.getElementById("password");
+    var email=document.getElementById("email");
+    var name=document.getElementById("name");
+
+    if(password.value.trim() == "" || email.value.trim()== "" || name.value.trim()==""){
+      alert("Please enter all the details to register");
+        return false;
+    }
+
+    // if( userId.value == "" ){
+    //     alert("Please enter the user id");
+    //     return false;
+    // }else if(password.value == ""){
+    //   alert("Please enter the password");
+    //     return false;
+    // }
+
+  }
+  
+  </script>
