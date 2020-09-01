@@ -17,7 +17,7 @@ Runs in any tomcat 8.0 or higher versions.
 
 Application Features:
 The application lets you enter the expenses and submit it.
-The "Check where it is peaking" button will take you to the page where you can track the expenses sorted by expenses from highest to lowest and also the application makes use of HighCharts with which you will be able to see the bar graph of the expenses base on category.
+The "Check where it is peaking" button will take you to the page where you can track the expenses sorted by category + expenses combination, from highest to lowest and also the application makes use of HighCharts with which you will be able to see the bar graph of the expenses base on category.
 
 Thanks,
 Amruta
