@@ -1,4 +1,4 @@
-# Expense
+# Expense Tracker
 Expense Tracker
 
 This is an Web Application to Track Expenses, developed using :
