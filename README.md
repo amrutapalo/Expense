@@ -3,10 +3,10 @@ Expense Tracker
 
 This is an Web Application to Track Expenses, developed using :
 
-JDK 8
-Spring Boot
-JPA Repository
-HTML, CSS, JavaScript
+JDK 8,
+Spring Boot,
+JPA Repository,
+HTML, CSS, JavaScript,
 HighCharts
 
 Database:
